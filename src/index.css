@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  background-color: #e9e7e7;
+}
+main {
+  width: 100%;
+  height: 100%;
+  padding: 1rem 1rem;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+}
+.listNews {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  width: 75%;
+  margin: 0 auto;
+}
