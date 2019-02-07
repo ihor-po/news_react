@@ -4,6 +4,8 @@ import './asset/iconfont/material-icons.css';
 import NewsComponent from './modules/news/newsComponent';
 import "@material/button/dist/mdc.button.css";
 import "@material/icon-button/dist/mdc.icon-button.css";
+import "@material/textfield/dist/mdc.textfield.css";
+import FormComponent from './modules/formCreate/formCreateComponent';
 
 class App extends Component {
   render() {
@@ -41,8 +43,8 @@ class App extends Component {
       ];
     return (
       <div className="App">
+      <FormComponent/>
       <h2>Fresh News</h2>
-      
         <NewsComponent data={news}/>
       </div>
       

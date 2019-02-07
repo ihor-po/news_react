@@ -6,12 +6,11 @@ class SingleNewsComponent extends Component {
   constructor(props) {
     super(props);
     this.state = { visible: false };
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  clickEvent = (e) => {
     this.setState({visible: true});
-    }  
+  }
 
     render() {
     let _title = this.props.title;
@@ -30,7 +29,7 @@ class SingleNewsComponent extends Component {
             aria-label="Unstar this item"
             aria-hidden="true"
             aria-pressed="true"
-            onClick={this.handleClick}
+            onClick={this.clickEvent}
           >
               <img src="" className="mdc-icon-button__icon" alt=""/><i className="material-icons">fingerprint</i>
           </button>
