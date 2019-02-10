@@ -12,8 +12,8 @@ class TextareaComponent extends Component {
   }
 
   changeText = (e) => {
+      this.props.getNewsTextData(this.state.fieldName, e.currentTarget.value);
       this.setState({value: e.currentTarget.value});
-      this.props.getNewsTextData(this.state.textarea.current.value);
   }
 
   render() {

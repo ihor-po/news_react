@@ -14,12 +14,15 @@ class InputComponent extends Component {
   }
 
   changeText = (e) => {
+    this.props.getTitleData(this.state.fieldName, e.currentTarget.value);
     this.setState({value: e.currentTarget.value});
-    this.props.getTitleData(this.state.input.current.value);
   }
 
   render() {
     const {input, fieldName} = this.state;
+    if (this.input !== undefined) {
+      
+    }
     return (
         <div className="mdc-text-field">
           <input 
@@ -34,7 +37,6 @@ class InputComponent extends Component {
           <div className="mdc-line-ripple"></div>
         </div>
     );
-    // const textfield = new MDCTextField(document.querySelector('.mdc-text-field'));
   }
 }
 

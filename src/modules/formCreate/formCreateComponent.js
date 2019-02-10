@@ -6,21 +6,47 @@ import './formCreate.css';
 import CheckboxComponent from './checkbox/checkboxComponent';
 
 class FormComponent extends Component {
-  state = {
-    title: '',
-    newsText: '',
-    buttonState: false
-  }
-  getTitleData = (_title) => {
-    this.setState({title: _title});
-  }
-  getNewsTextData = (_newsTextData) => {
-    this.setState({newsText: _newsTextData});
+  
+  constructor(props) {
+    super(props);
+    this.title = '';
+    this.newsText = '';
+    this.agree = false;
   }
 
+  state = {
+    title: '',
+    buttonState: false
+  }
+  
+  /**
+   * Get data from fields
+   * @property fieldName - name of the field
+   * @property data - data from field
+   */
+  getUserData = (fieldName, data) => {
+    switch(fieldName) {
+      case 'title':
+        this.title = data;
+        break;
+      case 'newsText':
+        this.newsText = data;
+        break;
+      case 'agreeCbx':
+        this.agree = data;
+        break;  
+      default:
+        break;  
+    }
+    this.validateData();
+  }
   validateData = () => {
-    const {title, newsText} = this.state;
-    this.setState({buttonState: (title.trim() && newsText.trim()) ? true : false});
+    let {title, newsText, agree} = this;
+    this.setState({buttonState: (title.trim() && newsText.trim() && agree) ? true : false});
+  }
+  showNews = (e) => {
+    e.preventDefault(e)
+    alert(this.title + '/r/n' + this.newsText);
   }
 
   
@@ -29,10 +55,10 @@ class FormComponent extends Component {
     const {buttonState} = this.state;
     return (
       <form className="createNews" id="createNews">
-        <InputComponent title="Заголовок" fieldName="title" getTitleData={this.getTitleData}/>
-        <TextareaComponent title="Текст новости" fieldName="newsText" getNewsTextData={this.getNewsTextData}/>
-        <CheckboxComponent />
-        <ButtonComponent disabled={buttonState}/>
+        <InputComponent title="Заголовок" fieldName="title" getTitleData={this.getUserData}/>
+        <TextareaComponent title="Текст новости" fieldName="newsText" getNewsTextData={this.getUserData}/>
+        <CheckboxComponent fieldName="agreeCbx" getUserAgree={this.getUserData}/>
+        <ButtonComponent disabled={buttonState} onClick={this.showNews}/>
       </form>
     );
   }

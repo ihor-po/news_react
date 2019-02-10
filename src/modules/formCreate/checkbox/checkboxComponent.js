@@ -12,6 +12,7 @@ class CheckboxComponent extends Component {
   }
 
   changeState = () => {
+    this.props.getUserAgree(this.state.fieldName, this.state.checkbox.current.checked);
     this.setState({checked: this.state.checkbox.current.checked});
   }
 
@@ -19,7 +20,7 @@ class CheckboxComponent extends Component {
     return (
         <div>
         <label className='add__checkrule'>
-          <input type='checkbox' onChange={this.changeState} ref={this.state.checkbox}/> Я согласен с правилами
+          <input type='checkbox' onChange={this.changeState} ref={this.state.checkbox}/>Несу ответсвенность за новость
         </label>
         </div>
     );
