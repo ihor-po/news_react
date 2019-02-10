@@ -45,8 +45,19 @@ class FormComponent extends Component {
     this.setState({buttonState: (title.trim() && newsText.trim() && agree) ? true : false});
   }
   showNews = (e) => {
-    e.preventDefault(e)
-    alert(this.title + '/r/n' + this.newsText);
+    e.preventDefault();
+    let _news = this.props.news;
+    let last = _news[_news.length - 1];
+    let newNews = {
+      id: last.id + 1,
+      title: this.title,
+      newsText: this.newsText,
+      previewText: this.newsText.substr(0, 60) + '...'
+    }
+    _news[last.id + 1] = newNews;
+    this.props.updateNews(_news);
+
+    //alert(this.title + '/r/n' + this.newsText);
   }
 
   
